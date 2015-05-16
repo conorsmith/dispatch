@@ -1,0 +1,23 @@
+{
+    "name": "conorsmith/dispatch",
+    "require": {
+        "heybigname/backup-manager": "~0.3",
+        "symfony/console": "~2.6",
+        "nesbot/carbon": "~1.19",
+        "league/flysystem-dropbox": "~1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.0",
+        "phpspec/phpspec": "~2.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Tercet\\Dispatch\\": "app/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tercet\\Dispatch\\Test\\": "tests/app/"
+        }
+    }
+}
