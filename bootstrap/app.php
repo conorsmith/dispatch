@@ -2,11 +2,11 @@
 
 require __DIR__.'/../vendor/autoload.php';
 
-use BigName\BackupManager\Config\Config;
-use BigName\BackupManager\Filesystems;
-use BigName\BackupManager\Databases;
-use BigName\BackupManager\Compressors;
-use BigName\BackupManager\Manager;
+use BackupManager\Config\Config;
+use BackupManager\Filesystems;
+use BackupManager\Databases;
+use BackupManager\Compressors;
+use BackupManager\Manager;
 
 $storageConfig = Config::fromPhpFile(__DIR__.'/../config/storage.php');
 $databasesConfig = Config::fromPhpFile(__DIR__.'/../config/databases.php');
@@ -18,7 +18,7 @@ $filesystemsConfig['local'] = [
 ];
 
 $filesystems = new Filesystems\FilesystemProvider(new Config($filesystemsConfig));
-$filesystems->add(new Filesystems\DropboxFilesystem);
+$filesystems->add(new Filesystems\DropboxV2Filesystem);
 $filesystems->add(new Filesystems\LocalFilesystem);
 
 $databases = new Databases\DatabaseProvider($databasesConfig);

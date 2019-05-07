@@ -2,8 +2,9 @@
 
 namespace Tercet\Dispatch;
 
-use BigName\BackupManager\Config\Config;
-use BigName\BackupManager\Manager;
+use BackupManager\Config\Config;
+use BackupManager\Filesystems\Destination;
+use BackupManager\Manager;
 use Carbon\Carbon;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -44,8 +45,7 @@ class BackupCommand extends Command
         foreach ($databases as $database) {
             $this->backupManager->makeBackup()->run(
                 $database,
-                $target,
-                $path . $database . '.sql',
+                [new Destination($target, $path . $database . '.sql')],
                 'gzip'
             );
             $output->writeln(sprintf("Backed up database '%s' to %s", $database, ucfirst($target)));
